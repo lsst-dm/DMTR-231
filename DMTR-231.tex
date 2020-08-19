@@ -1,0 +1,522 @@
+% generated from JIRA project LVV
+% using template at <template>.
+% using docsteady version 1.2rc22.post1+g37070f2.d20200818
+% Please do not edit -- update information in Jira instead
+
+\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
+\usepackage{geometry}
+\usepackage{longtable,booktabs}
+\usepackage{enumitem}
+\usepackage{arydshln}
+\usepackage{attachfile}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\input meta.tex
+
+\newcommand{\attachmentsUrl}{https://github.com/\gitorg/\lsstDocType-\lsstDocNum/blob/\gitref/attachments}
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\setcounter{tocdepth}{4}
+
+\begin{document}
+
+\def\milestoneName{ComCam OPS Readiness}
+\def\milestoneId{LDM-503-11a}
+\def\product{Data Management}
+
+\setDocCompact{true}
+
+\title{LDM-503-11a: ComCam OPS Readiness Test Plan and Report}
+\setDocRef{\lsstDocType-\lsstDocNum}
+\date{\vcsdate}
+\author{ Robert Gruendl }
+
+\input{history_and_info.tex}
+
+
+\setDocAbstract{
+This is the test plan and report for LDM-503-11a (ComCam OPS Readiness),
+an LSST milestone pertaining to the Data Management Subsystem.
+}
+
+
+\maketitle
+
+\section{Introduction}
+\label{sect:intro}
+
+
+\subsection{Objectives}
+\label{sect:objectives}
+
+ This test verifies that DM software are ready obtain and process ComCam
+observations. ~Since this verification element is needed prior to on-sky
+data acquisition the tests are necessarily focused on the ability to
+process test-stand data. ~It is worth noting that a variety of
+specialized data are expected both from the test stand(s) and once
+ComCam is integrated with the TMA. ~Many of these may require
+specialized software. ~These tests do not prove that DM is ready to
+process any or all data, but rather that DM is generically ready to
+processing ComCam data (and the flexibility to further extend the
+software base to encompass specialized processing is present).
+
+
+
+\subsection{System Overview}
+\label{sect:systemoverview}
+
+ The system requires an operating ComCam at the Summit or on a test stand
+(either at the Base or Tucson). ~LDM-503-06 will have already shown that
+data acquisition (DAQ), archiver, header service, transfer mechanism,
+and ingest to the DBB are functional. ~Those systems are re-verified by
+this test as: 1) changes will almost certainly have occurred and 2) for
+this test to succeed the data must be properly formed and ingested for
+processing to succeed.
+
+
+\subsection{Document Overview}
+\label{sect:docoverview}
+
+This document was generated from Jira, obtaining the relevant information from the
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76}
+~Jira Test Plan and related Test Cycles (
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C159}{LVV-C159}
+).
+
+Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}),
+the applicable documentation, and explains how this document is organized.
+Section \ref{sect:testplan} provides additional information about the test plan, like for example the configuration
+used for this test or related documentation.
+Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
+
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary},
+an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
+
+The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76} in Jira is \textbf{ Draft }.
+
+\subsection{References}
+\label{sect:references}
+\renewcommand{\refname}{}
+\bibliography{lsst,refs,books,refs_ads,local}
+
+
+\newpage
+\section{Test Plan Details}
+\label{sect:testplan}
+
+
+\subsection{Data Collection}
+
+  Observing is not required for this test campaign.
+
+\subsection{Verification Environment}
+\label{sect:hwconf}
+  This test assumes a working DBB (Data BackBone) where raw ComCam data
+are available and ingested into a Butler repository (can be Gen2 or
+Gen3). ~Base OODS (Observatory Operations Data System) must likewise be
+available with compute resources available. ~In both (DBB and OODS)
+cases compute hardware must be available that can see the OODS (Base
+compute) or DBB (USDF). ~ A current DM production stack should be used
+but the tests do not require more than a single node (and could run on a
+single-core).
+
+  \subsection{Entry Criteria}
+  ComCam produces data with proper headers and can be transferred to the
+USDF.
+
+  \subsection{Exit Criteria}
+  Successful ingest and processing of ComCam data with pipeline tasks in
+the DM stack and resultant data products made available through an LSP
+instance.
+
+
+\subsection{Related Documentation}
+
+The documentation related to this test campaign should be provided in the following DocuShare Collection
+(as per Verification Artifacts in Jira test plan LVV-P76).
+
+\begin{itemize}
+\item DocuShare Collection Not Specified
+\end{itemize}
+
+
+
+\subsection{PMCS Activity}
+
+Primavera milestones related to the test campaign.
+
+\begin{itemize}
+\item None
+\end{itemize}
+
+
+\newpage
+\section{Personnel}
+\label{sect:personnel}
+
+The personnel involved in the test campaign is shown in the following table.
+
+{\small
+\begin{longtable}{p{3cm}p{3cm}p{3cm}p{6cm}}
+\hline
+\multicolumn{2}{r}{T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76} owner:} &
+\multicolumn{2}{l}{\textbf{ Robert Gruendl } }\\\hline
+\multicolumn{2}{r}{T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C159}{LVV-C159} owner:} &
+\multicolumn{2}{l}{\textbf{
+Robert Gruendl }
+} \\\hline
+\textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{LVV-T1935}
+& {\small Robert Gruendl } & {\small  } &
+\begin{minipage}[]{6cm}
+\smallskip
+{\small  }
+\medskip
+\end{minipage}
+\\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{LVV-T1934}
+& {\small Robert Gruendl } & {\small  } &
+\begin{minipage}[]{6cm}
+\smallskip
+{\small  }
+\medskip
+\end{minipage}
+\\ \hline
+\end{longtable}
+}
+
+\newpage
+
+\section{Test Campaign Overview}
+\label{sect:overview}
+
+\subsection{Summary}
+\label{sect:summarytable}
+
+{\small
+\begin{longtable}{p{2cm}cp{2.3cm}p{8.6cm}p{2.3cm}}
+\toprule
+\multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76}:} &
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Draft \\\hline
+\multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C159}{LVV-C159}:} &
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Not Executed \\\hline
+\textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{LVV-T1935}
+&  1
+& Not Executed &
+\begin{minipage}[]{9cm}
+\smallskip
+
+\medskip
+\end{minipage}
+&
+\\\hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{LVV-T1934}
+&  1
+& Not Executed &
+\begin{minipage}[]{9cm}
+\smallskip
+
+\medskip
+\end{minipage}
+&
+\\\hline
+\caption{Test Campaign Summary}
+\label{table:summary}
+\end{longtable}
+}
+
+\subsection{Overall Assessment}
+\label{sect:overallassessment}
+
+Not yet available.
+
+\subsection{Recommended Improvements}
+\label{sect:recommendations}
+
+Not yet available.
+
+\newpage
+\section{Detailed Test Results}
+\label{sect:detailedtestresults}
+
+\subsection{Test Cycle LVV-C159 }
+
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C159}{LDM-503-11a: ComCam OPS Readiness}} in Jira.
+
+Test Cycle name: LDM-503-11a: ComCam OPS Readiness\\
+Status: Not Executed
+
+Test that ComCam data can be received in the DBB, be made available and
+processed with results also made available to DM staff.
+
+\subsubsection{Software Version/Baseline}
+Not provided.
+
+\subsubsection{Configuration}
+ComCam operating at Base/Summit in a test stand capable of delivering
+image to USDF. ~Data Backbone endpoint and OODS (Observatory Operations
+Data Service) ready to receive and ingest data.
+
+\subsubsection{Test Cases in LVV-C159 Test Cycle}
+
+\paragraph{ LVV-T1935 - Demonstrate ComCam Data Processing Capability }\mbox{}\\
+
+Version \textbf{1}.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{\textit{ LVV-T1935 } }
+test case in Jira.
+
+To process raw ComCam data and demonstrate that the results are
+available in the LSP
+
+\textbf{ Preconditions}:\\
+ComCam data acquisition and ingest are nominal. ~(LVV-T1934)
+
+Execution status: {\bf Not Executed }
+
+Final comment:\\
+
+
+Detailed steps results:
+
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Obtain BIAS and FLAT sequences (minimum of 3 exposures each)
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Acquired from ComCam Archiver.
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Data acquired, ingested, and available in shared work space.
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+2 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Process BIAS frames
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+From Step 1
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+ & Example Code \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+\begin{verbatim}
+setenv REPODIR=/projects/shared/comCam
+setenv VER_DIR={verification_dir}
+
+constructBias.py $REPODIR --rerun $VER_DIR \
+    --id expId=2020070800001^2020070800002^2020070800003 --batch-type none -c isr.doCrosstalk=False -j 9
+
+ingestCalibs.py $REPODIR $REPODIR/rerun/$VER_DIR/bias/*/*.fits --validity 9999 --mode=link --calib $REPODIR/CALIB
+\end{verbatim}
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Successful execution of BIAS reduction software (currently~
+
+\begin{verbatim}
+constructBias.py and ingestion)
+\end{verbatim}
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+3 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Process FLAT frames
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+From Step 1 (and step 2)
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+ & Example Code \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+\begin{verbatim}
+setenv REPODIR=/projects/shared/comCam
+setenv VER_DIR={verification_dir}
+\end{verbatim}
+
+\begin{verbatim}
+constructFlat.py $REPODIR --rerun $VER_DIR \
+    --id expId=2020070100152..2020070100154 filter=r --batch-type none -j 9 -c isr.doCrosstalk=False
+\end{verbatim}
+
+\begin{verbatim}
+ingestCalibs.py $REPODIR $REPODIR/rerun/$VER_DIR/flat/*/*.fits \
+    --validity 9999 --mode=link --calib $REPODIR/CALIB
+\end{verbatim}
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Successful execution of FLAT reduction software (currently
+constructFlat.py and ingestion)
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
+
+\paragraph{ LVV-T1934 - ComCam Data Transfer and Ingestion }\mbox{}\\
+
+Version \textbf{1}.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{\textit{ LVV-T1934 } }
+test case in Jira.
+
+Verify that ComCam Archiver data taken are transferred to USDF Data
+BackBone endpoint and Ingested
+
+\textbf{ Preconditions}:\\
+Operating ComCam and Base or Summit (test-stand or mounted on TMA)
+
+Execution status: {\bf Not Executed }
+
+Final comment:\\
+
+
+Detailed steps results:
+
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Trigger Exposure through OCS+Archiver
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+generated by ComCam as part of test
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+ & Example Code \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Ingested ComCam exposure (9 files) at USDF in shared Butler Repo (raw).
+~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+2 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Check for presence of ingested raw data at USDF
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Example Code \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+\# note: currently assumes butler Gen2 (from USDF machine)\\
+cd /project/shared/comCam\\
+sqlite3 \_parent/registry.sqlite3\\
+select expId,dayObs,raftName,detectorName from raw where expId=\{expo
+generated in step 1\};
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+query of repo registry finds appropriate data entries showing a single
+raft and 9 detectors
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
+
+
+\input{appendix.tex}
+\end{document}
