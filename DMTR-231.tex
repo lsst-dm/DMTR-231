@@ -52,16 +52,17 @@ an LSST milestone pertaining to the Data Management Subsystem.
 \subsection{Objectives}
 \label{sect:objectives}
 
- This test verifies that DM software are ready obtain and process ComCam
-observations. ~Since this verification element is needed prior to on-sky
-data acquisition the tests are necessarily focused on the ability to
-process test-stand data. ~It is worth noting that a variety of
+ This test verifies that DM software are ready to obtain and process
+ComCam observations. ~Since this verification element is needed prior to
+on-sky data acquisition the tests are necessarily focused on the ability
+to process test-stand data. ~It is worth noting that a variety of
 specialized data are expected both from the test stand(s) and once
 ComCam is integrated with the TMA. ~Many of these may require
 specialized software. ~These tests do not prove that DM is ready to
 process any or all data, but rather that DM is generically ready to
 processing ComCam data (and the flexibility to further extend the
-software base to encompass specialized processing is present).
+software base to encompass specialized processing is assumed to be
+present).
 
 
 
@@ -122,11 +123,11 @@ The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jsp
 \label{sect:hwconf}
   This test assumes a working DBB (Data BackBone) where raw ComCam data
 are available and ingested into a Butler repository (can be Gen2 or
-Gen3). ~Base OODS (Observatory Operations Data System) must likewise be
-available with compute resources available. ~In both (DBB and OODS)
-cases compute hardware must be available that can see the OODS (Base
-compute) or DBB (USDF). ~ A current DM production stack should be used
-but the tests do not require more than a single node (and could run on a
+Gen3). ~Alternatively, the Base OODS (Observatory Operations Data
+System) could be used for these tests. ~In either case (DBB or OODS)
+compute hardware must be available that can see the DBB (USDF) or OODS
+(Base compute). ~ A current DM production stack should be used but the
+tests do not require more than a single node (and could run on a
 single-core).
 
   \subsection{Entry Criteria}
@@ -274,7 +275,8 @@ Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{\te
 test case in Jira.
 
 To process raw ComCam data and demonstrate that the results are
-available in the LSP
+available either in the shared DM development environment/repository or
+in the LSP.
 
 \textbf{ Preconditions}:\\
 ComCam data acquisition and ingest are nominal. ~(LVV-T1934)
