@@ -164,7 +164,7 @@ Robert Gruendl }
 } \\\hline
 \textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{LVV-T1935}
-& {\small Robert Gruendl } & {\small  } &
+& {\small Robert Gruendl } & {\small Robert Gruendl } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -172,7 +172,7 @@ Robert Gruendl }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{LVV-T1934}
-& {\small Robert Gruendl } & {\small  } &
+& {\small Robert Gruendl } & {\small Robert Gruendl } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -196,23 +196,31 @@ Robert Gruendl }
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Approved \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C159}{LVV-C159}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{LVV-T1935}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Test script was executed by verifying that processing during OPS
+Rehearsal 2 generated the expected calibrations and ingested same into
+the calibration repository in the shared file area (currently
+/project/shared/comCam).
 \medskip
 \end{minipage}
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{LVV-T1934}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Data transfer from ComCam (temporarily installed in the Base Data
+Center) have been routinely performed since July 2020. ~ On the day this
+test was executed (2020-10-28) the Data BackBone endpoint at NCSA was
+checked for recently transferred data and then the shared repository was
+checked to make sure that the data were ingested and made generally
+available.
 \medskip
 \end{minipage}
 &   \\\hline
@@ -224,12 +232,21 @@ Robert Gruendl }
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-Not yet available.
+LVV-P76 was executed on 2020-10-28. ~During that execution it was
+demonstrated that ComCam data taken in the Base Data Center is
+successfully being transferred, archived and ingested (made available
+for use to DM staff) at the current USDF (NCSA). ~Furthermore it was
+verified that during the OPS Rehearsal \#2 that bias and flat frames
+were routinely processed and used to form calibration products
+(demonstrating DM is capable of processing ComCam data).
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
-Not yet available.
+Execution of the current plan occurred using a Gen2 Butler
+implementation. ~It is recommended that these tests should be
+re-verified once ComCam is installed at the summit facility and the DM
+stack is using the Gen3 Butler implementation for processing data.
 
 \newpage
 \section{Detailed Test Results}
@@ -240,7 +257,7 @@ Not yet available.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C159}{LDM-503-11a: ComCam OPS Readiness}} in Jira.
 
 Test Cycle name: LDM-503-11a: ComCam OPS Readiness\\
-Status: Not Executed
+Status: Done
 
 Test that ComCam data can be received in the DBB, be made available and
 processed with results also made available to DM staff.
@@ -268,9 +285,12 @@ in the LSP.
 \textbf{ Preconditions}:\\
 ComCam data acquisition and ingest are nominal. ~(LVV-T1934)
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\Test script was executed by verifying that processing during OPS
+Rehearsal 2 generated the expected calibrations and ingested same into
+the calibration repository in the shared file area (currently
+/project/shared/comCam).
 
 
 Detailed steps results:
@@ -303,11 +323,18 @@ Data acquired, ingested, and available in shared work space.
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+During OPS rehearsal \#2 (see DMTN-159) bias and flat sequences were
+acquired. ~Using the first night as an example:\\[2\baselineskip]cd
+/project/shared/comCam\\
+sqlite3 \_parent/registry.sqlite3\\
+expId,dayObs,imageType,raftName,detectorName from raw where
+dayObs='2020-07-27';\\[2\baselineskip]Shows sufficient BIAS and FLAT
+data have been properly ingested to the shared work-space.
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 2 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -352,11 +379,28 @@ constructBias.py and ingestion)
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+The processing notes that accompany DMTN-159 (are available in the
+github
+repo~\href{https://github.com/lsst-dm/OPS_Rehearsal_2}{OPS\_Rehearsal\_2}).
+There we find that constructBias.py and ingestCalibs.py were executed
+and find in the calibration repo the associated ingested bias
+entries:\\[2\baselineskip]cd /project/shared/comCam\\
+sqlite3 CALIB/calibRegistry.sqlite3\\
+select * from bias where calibDate='2020-07-27';\\
+1\textbar{}NONE\textbar{}R22\textbar{}S00\textbar{}0\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+2\textbar{}NONE\textbar{}R22\textbar{}S01\textbar{}1\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+3\textbar{}NONE\textbar{}R22\textbar{}S02\textbar{}2\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+4\textbar{}NONE\textbar{}R22\textbar{}S10\textbar{}3\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+5\textbar{}NONE\textbar{}R22\textbar{}S11\textbar{}4\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+6\textbar{}NONE\textbar{}R22\textbar{}S12\textbar{}5\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+7\textbar{}NONE\textbar{}R22\textbar{}S20\textbar{}6\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+8\textbar{}NONE\textbar{}R22\textbar{}S21\textbar{}7\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+9\textbar{}NONE\textbar{}R22\textbar{}S22\textbar{}8\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 3 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -403,11 +447,22 @@ constructFlat.py and ingestion)
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+Similar to step 2:\\[2\baselineskip]select * from flat where
+calibDate='2020-07-27';\\
+1\textbar{}r\textbar{}R22\textbar{}S00\textbar{}0\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+2\textbar{}r\textbar{}R22\textbar{}S01\textbar{}1\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+3\textbar{}r\textbar{}R22\textbar{}S02\textbar{}2\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+4\textbar{}r\textbar{}R22\textbar{}S10\textbar{}3\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+5\textbar{}r\textbar{}R22\textbar{}S11\textbar{}4\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+6\textbar{}r\textbar{}R22\textbar{}S12\textbar{}5\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+7\textbar{}r\textbar{}R22\textbar{}S20\textbar{}6\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+8\textbar{}r\textbar{}R22\textbar{}S21\textbar{}7\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+9\textbar{}r\textbar{}R22\textbar{}S22\textbar{}8\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 \end{longtable}
 
@@ -423,9 +478,14 @@ BackBone endpoint and Ingested
 \textbf{ Preconditions}:\\
 Operating ComCam and Base or Summit (test-stand or mounted on TMA)
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\Data transfer from ComCam (temporarily installed in the Base Data
+Center) have been routinely performed since July 2020. ~ On the day this
+test was executed (2020-10-28) the Data BackBone endpoint at NCSA was
+checked for recently transferred data and then the shared repository was
+checked to make sure that the data were ingested and made generally
+available.
 
 
 Detailed steps results:
@@ -465,11 +525,17 @@ Ingested ComCam exposure (9 files) at USDF in shared Butler Repo (raw).
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+Data are being routinely generate with ComCam installed at the Base Data
+Center. ~ I have verified that new data were generated toady
+(2020-10-28) and transferred to current USDF (NCSA) and the DBB endpoint
+for raw data exists and has data ~(i.e. files transfer has been placing
+new data in:
+~/lsstdata/offline/teststand/comcam/Archiver/storage/2020-10-28 )
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 2 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -501,11 +567,26 @@ raft and 9 detectors
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+Following the example above the most recent raw exposure to have arrived
+at USDF had expId 2020102800060.\\
+The following was generated when using that
+expId:\\[2\baselineskip]select expId,dayObs,raftName,detectorName from
+raw where expId=2020102800060;\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S00\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S01\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S02\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S10\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S11\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S12\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S20\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S21\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S22\\[2\baselineskip]Confirming
+successful ingestion into the shared Gen2 repo at NCSA.~
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 \end{longtable}
 
