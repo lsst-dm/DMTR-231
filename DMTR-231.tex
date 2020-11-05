@@ -131,7 +131,7 @@ USDF.
 
   \subsection{Exit Criteria}
   Successful ingest and processing of ComCam data with pipeline tasks in
-the DM stack and resultant data products made available through an LSP
+the DM stack and resultant data products made available through an RSP
 instance.
 
 
@@ -206,7 +206,7 @@ Robert Gruendl }
 Test script was executed by verifying that processing during OPS
 Rehearsal 2 generated the expected calibrations and ingested same into
 the calibration repository in the shared file area (currently
-/project/shared/comCam).
+/project/shared/comCam/CALIB).
 \medskip
 \end{minipage}
 &   \\\hline
@@ -216,7 +216,7 @@ the calibration repository in the shared file area (currently
 \begin{minipage}[]{9cm}
 \smallskip
 Data transfer from ComCam (temporarily installed in the Base Data
-Center) have been routinely performed since July 2020. ~ On the day this
+Center) has been routinely performed since July 2020. ~ On the day this
 test was executed (2020-10-28) the Data BackBone endpoint at NCSA was
 checked for recently transferred data and then the shared repository was
 checked to make sure that the data were ingested and made generally
@@ -235,10 +235,10 @@ available.
 LVV-P76 was executed on 2020-10-28. ~During that execution it was
 demonstrated that ComCam data taken in the Base Data Center is
 successfully being transferred, archived and ingested (made available
-for use to DM staff) at the current USDF (NCSA). ~Furthermore it was
-verified that during the OPS Rehearsal \#2 that bias and flat frames
-were routinely processed and used to form calibration products
-(demonstrating DM is capable of processing ComCam data).
+for use to DM staff) at NCSA. ~Furthermore it was verified that during
+the OPS Rehearsal \#2 that bias and flat frames were routinely processed
+and used to form calibration products (demonstrating DM is capable of
+processing ComCam data).
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
@@ -263,11 +263,11 @@ Test that ComCam data can be received in the DBB, be made available and
 processed with results also made available to DM staff.
 
 \subsubsection{Software Version/Baseline}
-Not provided.
+lsst\_distrib ~w\_2020\_30
 
 \subsubsection{Configuration}
 ComCam operating at Base/Summit in a test stand capable of delivering
-image to USDF. ~Data Backbone endpoint and OODS (Observatory Operations
+image to NCSA. ~Data Backbone endpoint and OODS (Observatory Operations
 Data Service) ready to receive and ingest data.
 
 \subsubsection{Test Cases in LVV-C159 Test Cycle}
@@ -280,7 +280,7 @@ test case in Jira.
 
 To process raw ComCam data and demonstrate that the results are
 available either in the shared DM development environment/repository or
-in the LSP.
+in the RSP.
 
 \textbf{ Preconditions}:\\
 ComCam data acquisition and ingest are nominal. ~(LVV-T1934)
@@ -290,7 +290,7 @@ Execution status: {\bf Pass }
 Final comment:\\Test script was executed by verifying that processing during OPS
 Rehearsal 2 generated the expected calibrations and ingested same into
 the calibration repository in the shared file area (currently
-/project/shared/comCam).
+/project/shared/comCam/CALIB).
 
 
 Detailed steps results:
@@ -327,7 +327,7 @@ During OPS rehearsal \#2 (see DMTN-159) bias and flat sequences were
 acquired. ~Using the first night as an example:\\[2\baselineskip]cd
 /project/shared/comCam\\
 sqlite3 \_parent/registry.sqlite3\\
-expId,dayObs,imageType,raftName,detectorName from raw where
+select expId,dayObs,imageType,raftName,detectorName from raw where
 dayObs='2020-07-27';\\[2\baselineskip]Shows sufficient BIAS and FLAT
 data have been properly ingested to the shared work-space.
 
@@ -354,7 +354,11 @@ From Step 1
  & Example Code \\
  & \begin{minipage}[t]{15cm}{\footnotesize
 \begin{verbatim}
-setenv REPODIR=/projects/shared/comCam
+# setup a current LSST stack, currently:
+/software/lsstsw/stack3/loadLSST.bash
+setup -v lsst_distrib
+
+setenv REPODIR=/project/shared/comCam
 setenv VER_DIR={verification_dir}
 
 constructBias.py $REPODIR --rerun $VER_DIR \
@@ -420,7 +424,11 @@ From Step 1 (and step 2)
  & Example Code \\
  & \begin{minipage}[t]{15cm}{\footnotesize
 \begin{verbatim}
-setenv REPODIR=/projects/shared/comCam
+# setup a current LSST stack, currently:
+/software/lsstsw/stack3/loadLSST.bash
+setup -v lsst_distrib
+
+setenv REPODIR=/project/shared/comCam
 setenv VER_DIR={verification_dir}
 \end{verbatim}
 
@@ -472,7 +480,7 @@ Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{\textit{ LVV-T1934 } }
 test case in Jira.
 
-Verify that ComCam Archiver data taken are transferred to USDF Data
+Verify that ComCam Archiver data taken are transferred to NCSA Data
 BackBone endpoint and Ingested
 
 \textbf{ Preconditions}:\\
@@ -481,7 +489,7 @@ Operating ComCam and Base or Summit (test-stand or mounted on TMA)
 Execution status: {\bf Pass }
 
 Final comment:\\Data transfer from ComCam (temporarily installed in the Base Data
-Center) have been routinely performed since July 2020. ~ On the day this
+Center) has been routinely performed since July 2020. ~ On the day this
 test was executed (2020-10-28) the Data BackBone endpoint at NCSA was
 checked for recently transferred data and then the shared repository was
 checked to make sure that the data were ingested and made generally
@@ -517,7 +525,7 @@ generated by ComCam as part of test
 
  & Expected Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
-Ingested ComCam exposure (9 files) at USDF in shared Butler Repo (raw).
+Ingested ComCam exposure (9 files) at NCSA in shared Butler Repo (raw).
 ~
 
 \medskip }
@@ -526,10 +534,9 @@ Ingested ComCam exposure (9 files) at USDF in shared Butler Repo (raw).
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
 Data are being routinely generate with ComCam installed at the Base Data
-Center. ~ I have verified that new data were generated toady
-(2020-10-28) and transferred to current USDF (NCSA) and the DBB endpoint
-for raw data exists and has data ~(i.e. files transfer has been placing
-new data in:
+Center. ~ I have verified that new data were generated today
+(2020-10-28) and transferred to NCSA and the DBB endpoint for raw data
+exists and has data ~(i.e. files transfer has been placing new data in:
 ~/lsstdata/offline/teststand/comcam/Archiver/storage/2020-10-28 )
 
 \medskip }
@@ -540,7 +547,7 @@ new data in:
 2 & Description \\
  & \begin{minipage}[t]{15cm}
 {\footnotesize
-Check for presence of ingested raw data at USDF
+Check for presence of ingested raw data at NCSA
 
 \medskip }
 \end{minipage}
@@ -554,7 +561,7 @@ Data produced in Step 1
 \end{minipage} \\ \cdashline{2-2}
  & Example Code \\
  & \begin{minipage}[t]{15cm}{\footnotesize
-\# note: currently assumes butler Gen2 (from USDF machine)\\
+\# note: currently assumes butler Gen2 (from NCSA machine)\\
 cd /project/shared/comCam\\
 sqlite3 \_parent/registry.sqlite3\\
 select expId,dayObs,raftName,detectorName from raw where expId=\{expo
@@ -574,7 +581,7 @@ raft and 9 detectors
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
 Following the example above the most recent raw exposure to have arrived
-at USDF had expId 2020102800060.\\
+at NCSA had expId 2020102800060.\\
 The following was generated when using that
 expId:\\[2\baselineskip]select expId,dayObs,raftName,detectorName from
 raw where expId=2020102800060;\\
@@ -587,7 +594,7 @@ raw where expId=2020102800060;\\
 2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S20\\
 2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S21\\
 2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S22\\[2\baselineskip]Confirming
-successful ingestion into the shared Gen2 repo at NCSA.~
+successful ingestion into the shared Gen2 repo at NCSA.
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
