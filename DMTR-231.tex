@@ -1,6 +1,6 @@
 % generated from JIRA project LVV
-% using template at /Users/GComoretto/anaconda3/envs/docsteady-env/lib/python3.7/site-packages/docsteady/templates/dm-tpr.latex.jinja2.
-% using docsteady version 1.2rc22
+% using template at /usr/local/lib/python3.7/site-packages/docsteady/templates/dm-tpr.latex.jinja2.
+% using docsteady version 1.2rc24
 % Please do not edit -- update information in Jira instead
 
 \documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
@@ -38,7 +38,8 @@
 
 
 \setDocAbstract{
-This is the test plan and report for LDM-503-11a (ComCam OPS Readiness),
+This is the test plan and report for
+\textbf{ ComCam OPS Readiness} (LDM-503-11a),
 an LSST milestone pertaining to the Data Management Subsystem.
 }
 
@@ -96,7 +97,7 @@ Section \ref{sect:overview} provides a summary of the test results, including an
 an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
-The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76} in Jira is \textbf{ Approved }.
+The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76} in Jira is \textbf{ Completed }.
 
 \subsection{References}
 \label{sect:references}
@@ -130,25 +131,19 @@ USDF.
 
   \subsection{Exit Criteria}
   Successful ingest and processing of ComCam data with pipeline tasks in
-the DM stack and resultant data products made available through an LSP
+the DM stack and resultant data products made available through an RSP
 instance.
 
 
 \subsection{Related Documentation}
 
-The documentation related to this test campaign should be provided in the following DocuShare Collection
-(as per Verification Artifacts in Jira test plan LVV-P76).
 
-\begin{itemize}
-\item DocuShare Collection Not Specified
-\end{itemize}
-
+No additional documentation provided.
 
 
 \subsection{PMCS Activity}
 
-Primavera milestones related to the test campaign.
-
+Primavera milestones related to the test campaign:
 LDM-503-11a: ~ComCam Ops Readiness
 
 
@@ -169,7 +164,7 @@ Robert Gruendl }
 } \\\hline
 \textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{LVV-T1935}
-& {\small Robert Gruendl } & {\small  } &
+& {\small Robert Gruendl } & {\small Robert Gruendl } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -177,7 +172,7 @@ Robert Gruendl }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{LVV-T1934}
-& {\small Robert Gruendl } & {\small  } &
+& {\small Robert Gruendl } & {\small Robert Gruendl } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -199,30 +194,36 @@ Robert Gruendl }
 \begin{longtable}{p{2cm}cp{2.3cm}p{8.6cm}p{2.3cm}}
 \toprule
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Approved \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Completed \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C159}{LVV-C159}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-11a: ComCam OPS Readiness }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1935}{LVV-T1935}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Test script was executed by verifying that processing during OPS
+Rehearsal 2 generated the expected calibrations and ingested same into
+the calibration repository in the shared file area (currently
+/project/shared/comCam/CALIB).
 \medskip
 \end{minipage}
-&
-\\\hline
+&   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{LVV-T1934}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Data transfer from ComCam (temporarily installed in the Base Data
+Center) has been routinely performed since July 2020. ~ On the day this
+test was executed (2020-10-28) the Data BackBone endpoint at NCSA was
+checked for recently transferred data and then the shared repository was
+checked to make sure that the data were ingested and made generally
+available.
 \medskip
 \end{minipage}
-&
-\\\hline
+&   \\\hline
 \caption{Test Campaign Summary}
 \label{table:summary}
 \end{longtable}
@@ -231,12 +232,21 @@ Robert Gruendl }
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-Not yet available.
+LVV-P76 was executed on 2020-10-28. ~During that execution it was
+demonstrated that ComCam data taken in the Base Data Center is
+successfully being transferred, archived and ingested (made available
+for use to DM staff) at NCSA. ~Furthermore it was verified that during
+the OPS Rehearsal \#2 that bias and flat frames were routinely processed
+and used to form calibration products (demonstrating DM is capable of
+processing ComCam data).
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
-Not yet available.
+Execution of the current plan occurred using a Gen2 Butler
+implementation. ~It is recommended that these tests should be
+re-verified once ComCam is installed at the summit facility and the DM
+stack is using the Gen3 Butler implementation for processing data.
 
 \newpage
 \section{Detailed Test Results}
@@ -247,17 +257,17 @@ Not yet available.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C159}{LDM-503-11a: ComCam OPS Readiness}} in Jira.
 
 Test Cycle name: LDM-503-11a: ComCam OPS Readiness\\
-Status: Not Executed
+Status: Done
 
 Test that ComCam data can be received in the DBB, be made available and
 processed with results also made available to DM staff.
 
 \subsubsection{Software Version/Baseline}
-Not provided.
+lsst\_distrib ~w\_2020\_30
 
 \subsubsection{Configuration}
 ComCam operating at Base/Summit in a test stand capable of delivering
-image to USDF. ~Data Backbone endpoint and OODS (Observatory Operations
+image to NCSA. ~Data Backbone endpoint and OODS (Observatory Operations
 Data Service) ready to receive and ingest data.
 
 \subsubsection{Test Cases in LVV-C159 Test Cycle}
@@ -270,14 +280,17 @@ test case in Jira.
 
 To process raw ComCam data and demonstrate that the results are
 available either in the shared DM development environment/repository or
-in the LSP.
+in the RSP.
 
 \textbf{ Preconditions}:\\
 ComCam data acquisition and ingest are nominal. ~(LVV-T1934)
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\Test script was executed by verifying that processing during OPS
+Rehearsal 2 generated the expected calibrations and ingested same into
+the calibration repository in the shared file area (currently
+/project/shared/comCam/CALIB).
 
 
 Detailed steps results:
@@ -310,11 +323,18 @@ Data acquired, ingested, and available in shared work space.
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+During OPS rehearsal \#2 (see DMTN-159) bias and flat sequences were
+acquired. ~Using the first night as an example:\\[2\baselineskip]cd
+/project/shared/comCam\\
+sqlite3 \_parent/registry.sqlite3\\
+select expId,dayObs,imageType,raftName,detectorName from raw where
+dayObs='2020-07-27';\\[2\baselineskip]Shows sufficient BIAS and FLAT
+data have been properly ingested to the shared work-space.
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 2 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -334,7 +354,11 @@ From Step 1
  & Example Code \\
  & \begin{minipage}[t]{15cm}{\footnotesize
 \begin{verbatim}
-setenv REPODIR=/projects/shared/comCam
+# setup a current LSST stack, currently:
+/software/lsstsw/stack3/loadLSST.bash
+setup -v lsst_distrib
+
+setenv REPODIR=/project/shared/comCam
 setenv VER_DIR={verification_dir}
 
 constructBias.py $REPODIR --rerun $VER_DIR \
@@ -359,11 +383,28 @@ constructBias.py and ingestion)
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+The processing notes that accompany DMTN-159 (are available in the
+github
+repo~\href{https://github.com/lsst-dm/OPS_Rehearsal_2}{OPS\_Rehearsal\_2}).
+There we find that constructBias.py and ingestCalibs.py were executed
+and find in the calibration repo the associated ingested bias
+entries:\\[2\baselineskip]cd /project/shared/comCam\\
+sqlite3 CALIB/calibRegistry.sqlite3\\
+select * from bias where calibDate='2020-07-27';\\
+1\textbar{}NONE\textbar{}R22\textbar{}S00\textbar{}0\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+2\textbar{}NONE\textbar{}R22\textbar{}S01\textbar{}1\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+3\textbar{}NONE\textbar{}R22\textbar{}S02\textbar{}2\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+4\textbar{}NONE\textbar{}R22\textbar{}S10\textbar{}3\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+5\textbar{}NONE\textbar{}R22\textbar{}S11\textbar{}4\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+6\textbar{}NONE\textbar{}R22\textbar{}S12\textbar{}5\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+7\textbar{}NONE\textbar{}R22\textbar{}S20\textbar{}6\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+8\textbar{}NONE\textbar{}R22\textbar{}S21\textbar{}7\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+9\textbar{}NONE\textbar{}R22\textbar{}S22\textbar{}8\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 3 & Description \\
  & \begin{minipage}[t]{15cm}
@@ -383,7 +424,11 @@ From Step 1 (and step 2)
  & Example Code \\
  & \begin{minipage}[t]{15cm}{\footnotesize
 \begin{verbatim}
-setenv REPODIR=/projects/shared/comCam
+# setup a current LSST stack, currently:
+/software/lsstsw/stack3/loadLSST.bash
+setup -v lsst_distrib
+
+setenv REPODIR=/project/shared/comCam
 setenv VER_DIR={verification_dir}
 \end{verbatim}
 
@@ -410,11 +455,22 @@ constructFlat.py and ingestion)
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+Similar to step 2:\\[2\baselineskip]select * from flat where
+calibDate='2020-07-27';\\
+1\textbar{}r\textbar{}R22\textbar{}S00\textbar{}0\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+2\textbar{}r\textbar{}R22\textbar{}S01\textbar{}1\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+3\textbar{}r\textbar{}R22\textbar{}S02\textbar{}2\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+4\textbar{}r\textbar{}R22\textbar{}S10\textbar{}3\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+5\textbar{}r\textbar{}R22\textbar{}S11\textbar{}4\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+6\textbar{}r\textbar{}R22\textbar{}S12\textbar{}5\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+7\textbar{}r\textbar{}R22\textbar{}S20\textbar{}6\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+8\textbar{}r\textbar{}R22\textbar{}S21\textbar{}7\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
+9\textbar{}r\textbar{}R22\textbar{}S22\textbar{}8\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 \end{longtable}
 
@@ -424,15 +480,20 @@ Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1934}{\textit{ LVV-T1934 } }
 test case in Jira.
 
-Verify that ComCam Archiver data taken are transferred to USDF Data
+Verify that ComCam Archiver data taken are transferred to NCSA Data
 BackBone endpoint and Ingested
 
 \textbf{ Preconditions}:\\
 Operating ComCam and Base or Summit (test-stand or mounted on TMA)
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\Data transfer from ComCam (temporarily installed in the Base Data
+Center) has been routinely performed since July 2020. ~ On the day this
+test was executed (2020-10-28) the Data BackBone endpoint at NCSA was
+checked for recently transferred data and then the shared repository was
+checked to make sure that the data were ingested and made generally
+available.
 
 
 Detailed steps results:
@@ -464,7 +525,7 @@ generated by ComCam as part of test
 
  & Expected Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
-Ingested ComCam exposure (9 files) at USDF in shared Butler Repo (raw).
+Ingested ComCam exposure (9 files) at NCSA in shared Butler Repo (raw).
 ~
 
 \medskip }
@@ -472,24 +533,35 @@ Ingested ComCam exposure (9 files) at USDF in shared Butler Repo (raw).
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+Data are being routinely generate with ComCam installed at the Base Data
+Center. ~ I have verified that new data were generated today
+(2020-10-28) and transferred to NCSA and the DBB endpoint for raw data
+exists and has data ~(i.e. files transfer has been placing new data in:
+~/lsstdata/offline/teststand/comcam/Archiver/storage/2020-10-28 )
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 2 & Description \\
  & \begin{minipage}[t]{15cm}
 {\footnotesize
-Check for presence of ingested raw data at USDF
+Check for presence of ingested raw data at NCSA
 
 \medskip }
 \end{minipage}
 \\ \cdashline{2-2}
 
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Data produced in Step 1
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
  & Example Code \\
  & \begin{minipage}[t]{15cm}{\footnotesize
-\# note: currently assumes butler Gen2 (from USDF machine)\\
+\# note: currently assumes butler Gen2 (from NCSA machine)\\
 cd /project/shared/comCam\\
 sqlite3 \_parent/registry.sqlite3\\
 select expId,dayObs,raftName,detectorName from raw where expId=\{expo
@@ -508,11 +580,26 @@ raft and 9 detectors
 
  & Actual Result \\
  & \begin{minipage}[t]{15cm}{\footnotesize
+Following the example above the most recent raw exposure to have arrived
+at NCSA had expId 2020102800060.\\
+The following was generated when using that
+expId:\\[2\baselineskip]select expId,dayObs,raftName,detectorName from
+raw where expId=2020102800060;\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S00\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S01\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S02\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S10\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S11\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S12\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S20\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S21\\
+2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S22\\[2\baselineskip]Confirming
+successful ingestion into the shared Gen2 repo at NCSA.
 
 \medskip }
 \end{minipage} \\ \cdashline{2-2}
 
- & Status: \textbf{ Not Executed } \\ \hline
+ & Status: \textbf{ Pass } \\ \hline
 
 \end{longtable}
 
