@@ -1,6 +1,6 @@
 % generated from JIRA project LVV
-% using template at /usr/local/lib/python3.7/site-packages/docsteady/templates/dm-tpr.latex.jinja2.
-% using docsteady version 1.2rc24
+% using template at <template>.
+% using docsteady version 1.2rc24.post10+g05696ce.d20201201
 % Please do not edit -- update information in Jira instead
 
 \documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
@@ -295,34 +295,37 @@ the calibration repository in the shared file area (currently
 
 Detailed steps results:
 
-\begin{longtable}{p{1cm}p{15cm}}
-\hline
-{Step} & Step Details\\ \hline
-1 & Description \\
- & \begin{minipage}[t]{15cm}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
+\toprule
+ & Description \\ \hline
+\end{tabular}
 {\footnotesize
 Obtain BIAS and FLAT sequences (minimum of 3 exposures each)
 
-\medskip }
-\end{minipage}
-\\ \cdashline{2-2}
-
- & Test Data \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Test Data \\ \hline
+\end{tabular}
+ {\footnotesize
 Acquired from ComCam Archiver.
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Expected Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Expected Result \\ \hline
+\end{tabular}
+{\footnotesize
 Data acquired, ingested, and available in shared work space.
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Actual Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Actual Result \\ \hline
+\end{tabular}
+{\footnotesize
 During OPS rehearsal \#2 (see DMTN-159) bias and flat sequences were
 acquired. ~Using the first night as an example:\\[2\baselineskip]cd
 /project/shared/comCam\\
@@ -331,28 +334,30 @@ select expId,dayObs,imageType,raftName,detectorName from raw where
 dayObs='2020-07-27';\\[2\baselineskip]Shows sufficient BIAS and FLAT
 data have been properly ingested to the shared work-space.
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Status: \textbf{ Pass } \\ \hline
-
-2 & Description \\
- & \begin{minipage}[t]{15cm}
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
+\toprule
+ & Description \\ \hline
+\end{tabular}
 {\footnotesize
 Process BIAS frames
 
-\medskip }
-\end{minipage}
-\\ \cdashline{2-2}
-
- & Test Data \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Test Data \\ \hline
+\end{tabular}
+ {\footnotesize
 From Step 1
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
- & Example Code \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Example Code \\ \hline
+\end{tabular}
+{\footnotesize
 \begin{verbatim}
 # setup a current LSST stack, currently:
 /software/lsstsw/stack3/loadLSST.bash
@@ -367,22 +372,24 @@ constructBias.py $REPODIR --rerun $VER_DIR \
 ingestCalibs.py $REPODIR $REPODIR/rerun/$VER_DIR/bias/*/*.fits --validity 9999 --mode=link --calib $REPODIR/CALIB
 \end{verbatim}
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Expected Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Expected Result \\ \hline
+\end{tabular}
+{\footnotesize
 Successful execution of BIAS reduction software (currently~
 
 \begin{verbatim}
 constructBias.py and ingestion)
 \end{verbatim}
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Actual Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Actual Result \\ \hline
+\end{tabular}
+{\footnotesize
 The processing notes that accompany DMTN-159 (are available in the
 github
 repo~\href{https://github.com/lsst-dm/OPS_Rehearsal_2}{OPS\_Rehearsal\_2}).
@@ -401,28 +408,30 @@ select * from bias where calibDate='2020-07-27';\\
 8\textbar{}NONE\textbar{}R22\textbar{}S21\textbar{}7\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
 9\textbar{}NONE\textbar{}R22\textbar{}S22\textbar{}8\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Status: \textbf{ Pass } \\ \hline
-
-3 & Description \\
- & \begin{minipage}[t]{15cm}
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
+\toprule
+ & Description \\ \hline
+\end{tabular}
 {\footnotesize
 Process FLAT frames
 
-\medskip }
-\end{minipage}
-\\ \cdashline{2-2}
-
- & Test Data \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Test Data \\ \hline
+\end{tabular}
+ {\footnotesize
 From Step 1 (and step 2)
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
- & Example Code \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Example Code \\ \hline
+\end{tabular}
+{\footnotesize
 \begin{verbatim}
 # setup a current LSST stack, currently:
 /software/lsstsw/stack3/loadLSST.bash
@@ -442,19 +451,21 @@ ingestCalibs.py $REPODIR $REPODIR/rerun/$VER_DIR/flat/*/*.fits \
     --validity 9999 --mode=link --calib $REPODIR/CALIB
 \end{verbatim}
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Expected Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Expected Result \\ \hline
+\end{tabular}
+{\footnotesize
 Successful execution of FLAT reduction software (currently
 constructFlat.py and ingestion)
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Actual Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Actual Result \\ \hline
+\end{tabular}
+{\footnotesize
 Similar to step 2:\\[2\baselineskip]select * from flat where
 calibDate='2020-07-27';\\
 1\textbar{}r\textbar{}R22\textbar{}S00\textbar{}0\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
@@ -467,12 +478,7 @@ calibDate='2020-07-27';\\
 8\textbar{}r\textbar{}R22\textbar{}S21\textbar{}7\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28\\
 9\textbar{}r\textbar{}R22\textbar{}S22\textbar{}8\textbar{}2020-07-27\textbar{}1993-03-12\textbar{}2020-07-28
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Status: \textbf{ Pass } \\ \hline
-
-\end{longtable}
+}
 
 \paragraph{ LVV-T1934 - ComCam Data Transfer and Ingestion }\mbox{}\\
 
@@ -498,88 +504,97 @@ available.
 
 Detailed steps results:
 
-\begin{longtable}{p{1cm}p{15cm}}
-\hline
-{Step} & Step Details\\ \hline
-1 & Description \\
- & \begin{minipage}[t]{15cm}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
+\toprule
+ & Description \\ \hline
+\end{tabular}
 {\footnotesize
 Trigger Exposure through OCS+Archiver
 
-\medskip }
-\end{minipage}
-\\ \cdashline{2-2}
-
- & Test Data \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Test Data \\ \hline
+\end{tabular}
+ {\footnotesize
 generated by ComCam as part of test
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
- & Example Code \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Example Code \\ \hline
+\end{tabular}
+{\footnotesize
 
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Expected Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Expected Result \\ \hline
+\end{tabular}
+{\footnotesize
 Ingested ComCam exposure (9 files) at NCSA in shared Butler Repo (raw).
 ~
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Actual Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Actual Result \\ \hline
+\end{tabular}
+{\footnotesize
 Data are being routinely generate with ComCam installed at the Base Data
 Center. ~ I have verified that new data were generated today
 (2020-10-28) and transferred to NCSA and the DBB endpoint for raw data
 exists and has data ~(i.e. files transfer has been placing new data in:
 ~/lsstdata/offline/teststand/comcam/Archiver/storage/2020-10-28 )
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Status: \textbf{ Pass } \\ \hline
-
-2 & Description \\
- & \begin{minipage}[t]{15cm}
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
+\toprule
+ & Description \\ \hline
+\end{tabular}
 {\footnotesize
 Check for presence of ingested raw data at NCSA
 
-\medskip }
-\end{minipage}
-\\ \cdashline{2-2}
-
- & Test Data \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Test Data \\ \hline
+\end{tabular}
+ {\footnotesize
 Data produced in Step 1
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
- & Example Code \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Example Code \\ \hline
+\end{tabular}
+{\footnotesize
 \# note: currently assumes butler Gen2 (from NCSA machine)\\
 cd /project/shared/comCam\\
 sqlite3 \_parent/registry.sqlite3\\
 select expId,dayObs,raftName,detectorName from raw where expId=\{expo
 generated in step 1\};
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Expected Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Expected Result \\ \hline
+\end{tabular}
+{\footnotesize
 query of repo registry finds appropriate data entries showing a single
 raft and 9 detectors
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
-
- & Actual Result \\
- & \begin{minipage}[t]{15cm}{\footnotesize
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\hline
+ & Actual Result \\ \hline
+\end{tabular}
+{\footnotesize
 Following the example above the most recent raw exposure to have arrived
 at NCSA had expId 2020102800060.\\
 The following was generated when using that
@@ -596,12 +611,8 @@ raw where expId=2020102800060;\\
 2020102800060\textbar{}2020-10-28\textbar{}R22\textbar{}S22\\[2\baselineskip]Confirming
 successful ingestion into the shared Gen2 repo at NCSA.
 
-\medskip }
-\end{minipage} \\ \cdashline{2-2}
+}
 
- & Status: \textbf{ Pass } \\ \hline
-
-\end{longtable}
 
 
 \input{appendix.tex}
