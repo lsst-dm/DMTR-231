@@ -32,7 +32,7 @@ jobs:
           JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }} 
         run: |
           source ${CONDA}/bin/activate docsteady-env
-          docsteady  --namespace DM generate-tpr LVV-P72  DMTR-231.tex
+          docsteady  --namespace DM generate-tpr LVV-P99  DMTR-371.tex
         shell: bash
  
       - name: Create commit
@@ -58,4 +58,4 @@ jobs:
           LTD_PASSWORD: ${{ secrets.LTD_PASSWORD }}
           LTD_USERNAME: ${{ secrets.LTD_USERNAME }}
         run: |
-          lander --upload --pdf DMTR-231.pdf --lsstdoc DMTR-231.tex --ltd-product dmtr-231
+          lander --upload --pdf DMTR-371.pdf --lsstdoc DMTR-371.tex --ltd-product dmtr-371
