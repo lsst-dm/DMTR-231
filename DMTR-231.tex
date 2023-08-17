@@ -23,27 +23,27 @@
 
 \begin{document}
 
-\def\milestoneName{ComCam OPS Readiness}
-\def\milestoneId{LDM-503-11a}
+\def\milestoneName{All P1a DM requirements verified.}
+\def\milestoneId{LDM-503-19a}
+\def\testplanId{LVV-P72}
 \def\product{Data Management}
 
 \setDocCompact{true}
 
-\title{LDM-503-11a: ComCam OPS Readiness Test Plan and Report}
+\title{\testplanId: \milestoneId\,\textendash\,\milestoneName }
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{\vcsdate}
-\author{ Robert Gruendl }
+\date{\date}
+\author{Leanne Guy}
 
 \input{history_and_info.tex}
 
 
 \setDocAbstract{
-This is the test plan and report for
-\textbf{ ComCam OPS Readiness} (LDM-503-11a),
+This is the test plan and report for \textbf{All P1a DM requirements verified}\,(LDM-503-19a),
 an LSST milestone pertaining to the Data Management Subsystem.
 }
 
-
+s
 \maketitle
 
 \section{Introduction}
@@ -53,38 +53,27 @@ an LSST milestone pertaining to the Data Management Subsystem.
 \subsection{Objectives}
 \label{sect:objectives}
 
- This test plan verifies that DM software is ready to obtain and process
-ComCam observations. ~Since this test campaign is needed prior to on-sky
-data acquisition the tests are necessarily focused on the ability to
-process test-stand data. ~Therefore, the elements focus on the generic
-ability to process ComCam data.
-
+ This test plan verifies that DM software and services are ready for on-sky commissioning. 
 
 
 \subsection{System Overview}
 \label{sect:systemoverview}
 
- The system requires an operating ComCam at the Summit or on a test stand
-(either at the Base or Tucson). ~LDM-503-06 will have already shown that
-data acquisition (DAQ), archiver, header service, transfer mechanism,
-and ingest to the DBB are functional. ~Those systems are re-verified by
-this test as: 1) changes will almost certainly have occurred and 2) for
-this test to succeed the data must be properly formed and ingested for
-processing to succeed.\\[2\baselineskip]
 
 \subsection{Applicable Documents}\label{applicable-documents}
 
 \citeds{LDM-503}: Data Management Test Plan\\
-\citeds{LDM-639}: Data Management Acceptance Test Specification
+\citeds{LDM-639}: Data Management Acceptance Test Specification \\
+\citeds{LSE-61}: Data Management Requirements Specification \\
 
 
 \subsection{Document Overview}
 \label{sect:docoverview}
 
 This document was generated from Jira, obtaining the relevant information from the
-\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P76}{LVV-P76}
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P72}{LVV-P72}
 ~Jira Test Plan and related Test Cycles (
-\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C159}{LVV-C159}
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C154}{LVV-C154}
 ).
 
 Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}),
