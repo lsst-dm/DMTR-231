@@ -7,7 +7,6 @@
 DMTR-231
 ########
 
-LDM-503-19a:All P1a DM requirements verified
+LDM-503-19a
 
 To regenerate from Jira use the github action "docgen from Jira" on your branch. 
-
